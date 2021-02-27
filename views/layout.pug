@@ -1,7 +1,28 @@
+mixin navElement(text, url, iconClass)
+  li(class="nav__list-elemnt")
+    a(href=url class=`${url === currentPath ? 'nav__link active' : 'nav__link'}`)
+      span(class=iconClass) 
+      span=text
+
 doctype html
 html
   head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/style/main.min.css')
   body
+    nav(class="nav" id="nav")
+      ul(class="nav__list") 
+        +navElement('Main', '/', 'fas fa-home')
+        +navElement('All users', '/users', 'fas fa-users')
+        +navElement('Fractions', '/fractions', 'fas fa-flag')
+      a(href="/" class="sign-in")
+        span(class="fas fa-user")
+        span Sign in
+    button(class="bars" id="bars")
     block content

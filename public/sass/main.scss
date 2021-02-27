@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import "variables";
+html {
+  font-size: $fontSize;
+}
+
+body {
+  background: $siteBg;
+  font-family: $fontFamily;
+  color: $fontColor;
+}
+
+@import "elements/bars";
+@import "elements/nav";
