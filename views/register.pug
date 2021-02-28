@@ -1,9 +1,11 @@
 extends layout
 
-mixin formElement(inputType, inputName, spanTxt)
+mixin formElement(inputType, inputName, spanTxt, inputValue, messageError)
     div(class="register-form__input")
+        if(messageError != '')
+        p(class="error")=messageError
         span=spanTxt
-        input(name=inputName type=inputType required)
+        input(name=inputName type=inputType value=`${inputValue ? inputValue : ''}` required)
 
 block content
     main(class="sign-in-main")
@@ -11,14 +13,16 @@ block content
           div(class="register-form")
             h2(class="login-form-title") Register
             form(method="post" class="register-form__form")
-                +formElement('text', 'login', '*Login')
-                +formElement('email', 'email', '*Email')
-                +formElement('password', 'password', '*Password')
+                +formElement('text', 'login', '*Login', `${!!registerParams ? registerParams.login : ''}`, `${!!messages ? messages.login : ''}`)
+                +formElement('email', 'email', '*Email', `${!!registerParams ? registerParams.email : ''}`, `${!!messages ? messages.email : ''}`)
+                +formElement('password', 'password', '*Password', `${!!registerParams ? registerParams.password : ''}`)
                 button(submit class="button register-form__button") Register
             p(id="show-login" class="show-login") I have account!
           div(class="register-form login" id="login-panel")
             button(class="login__close-button" id="close-login") 
             h2(class="login-form-title") Login
+            if(!!loginParams)
+                p(class="error")=loginParams
             form(method="post" class="register-form__form")
                 +formElement('text', 'login', '*Login')
                 +formElement('password', 'password', '*Password')
