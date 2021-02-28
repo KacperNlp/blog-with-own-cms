@@ -21,8 +21,13 @@ html
         +navElement('Main', '/', 'fas fa-home')
         +navElement('All users', '/users', 'fas fa-users')
         +navElement('Fractions', '/fractions', 'fas fa-flag')
-      a(href="/register" class="sign-in")
-        span(class="fas fa-user")
-        span Sign in
+      if(isLogged == false)
+        a(href="/register" class="sign-in")
+          span(class="fas fa-user")
+          span Sign in
+      else 
+        a(href=`/account/${loginOfLoggedUser}` class="sign-in")
+          span(class="fas fa-user")
+          span Hello #{loginOfLoggedUser}
     button(class="bars" id="bars")
     block content
