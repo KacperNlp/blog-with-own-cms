@@ -1,0 +1,148 @@
+.sign-in-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 0;
+}
+
+.form-container {
+  position: relative;
+  width: 90%;
+  height: 550px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  @media (min-width: 400px) {
+    width: 360px;
+  }
+
+  @media (min-width: 760px) {
+    width: 450px;
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+
+    & span {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+      color: $neutral;
+    }
+
+    & input {
+      padding: 5px 10px;
+      outline: transparent;
+      background: lighten($color: $siteBg, $amount: 5);
+      border: 1px solid $neutral;
+      color: $fontColor;
+      transition: 0.3s;
+
+      &:focus {
+        background: lighten($color: $siteBg, $amount: 10);
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      @media (min-width: 760px) {
+        width: 250px;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: 50px;
+  }
+}
+
+.login-form-title {
+  font-size: 1.8rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+
+  @media (min-width: 760px) {
+    font-size: 2.2rem;
+  }
+}
+
+.show-login {
+  cursor: pointer;
+  color: $neutral;
+  font-size: 1.2rem;
+  transition: 0.3s;
+
+  &:hover {
+    color: darken($color: $neutral, $amount: 10);
+  }
+}
+
+.login {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  justify-content: center;
+  background: rgba($siteBg, 0.9);
+  transition: 0.4s;
+
+  &.active {
+    top: 0;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: transparent;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: $neutral;
+      transition: 0.3s;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover::after,
+    &:hover::before {
+      background: darken($color: $neutral, $amount: 10);
+    }
+  }
+}

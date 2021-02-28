@@ -1,0 +1,30 @@
+extends layout
+
+mixin formElement(inputType, inputName, spanTxt)
+    div(class="register-form__input")
+        span=spanTxt
+        input(name=inputName type=inputType)
+
+block content
+    main(class="sign-in-main")
+        div(class="form-container")
+          div(class="register-form")
+            h2(class="login-form-title") Register
+            form(method="post" class="register-form__form")
+                +formElement('text', 'login', '*Login')
+                +formElement('email', 'email', '*Email')
+                +formElement('password', 'password', '*Password')
+                button(submit class="button register-form__button") Register
+            p(id="show-login" class="show-login") I have account!
+          div(class="register-form login" id="login-panel")
+            button(class="login__close-button" id="close-login") 
+            h2(class="login-form-title") Login
+            form(method="post" class="register-form__form")
+                +formElement('text', 'login', '*Login')
+                +formElement('password', 'password', '*Password')
+                button(submit class="button register-form__button") Login
+
+
+
+    script(src="./javascript/modules/RegisterForm.js" type="module")    
+    script(src="./javascript/main.js" type="module") 
