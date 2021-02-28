@@ -3,7 +3,7 @@ extends layout
 mixin formElement(inputType, inputName, spanTxt)
     div(class="register-form__input")
         span=spanTxt
-        input(name=inputName type=inputType)
+        input(name=inputName type=inputType required)
 
 block content
     main(class="sign-in-main")
