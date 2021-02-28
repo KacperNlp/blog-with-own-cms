@@ -1,7 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  main  
+    section
+      div(class="articles__latest latest-article")
+        img(src="/images/article640.jpg" class="latest-article__img")
+        div(class="latest-article__content")
+          h2(class="latest-article__title") Lorem ipsum dolor sit amet
+          p(class="latest-article__sneak-peak") Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odio vitae distinctio numquam ipsum, ipsa repudiandae architecto explicabo cupiditate voluptatem.
+          a(href="/" class="button latest-article__button") Read more
+
+    //secion of articles
+    section(class="list-of-articles")
+      div(class="articles-container")
+        div(class="article-tile")
+          img(src="/images/article640.jpg" class="article-tile__img")
+          div(class="article-tile__content")
+            h2(class="article-tile__title") Lorem ipsum dolor sit amet
+            p(class="article-tile__sneak-peak") Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odio vitae distinctio numquam ipsum, ipsa repudiandae architecto explicabo cupiditate voluptatem.
+            a(href="/" class="button article-tile__button") Read more
+        div(class="article-tile")
+          img(src="/images/article640.jpg" class="article-tile__img")
+          div(class="article-tile__content")
+            h2(class="article-tile__title") Lorem ipsum dolor sit amet
+            p(class="article-tile__sneak-peak") Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odio vitae distinctio numquam ipsum, ipsa repudiandae architecto explicabo cupiditate voluptatem.
+            a(href="/" class="button article-tile__button") Read more
+        div(class="article-tile")
+          img(src="/images/article640.jpg" class="article-tile__img")
+          div(class="article-tile__content")
+            h2(class="article-tile__title") Lorem ipsum dolor sit amet
+            p(class="article-tile__sneak-peak") Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odio vitae distinctio numquam ipsum, ipsa repudiandae architecto explicabo cupiditate voluptatem.
+            a(href="/" class="button article-tile__button") Read more
+
+
+      
 
   script(src="./javascript/main.js" type="module") 

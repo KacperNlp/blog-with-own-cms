@@ -1,0 +1,15 @@
+.button {
+  padding: 15px 20px;
+  font-size: 1.4rem;
+  color: $fontColor;
+  text-decoration: none;
+  background: $neutral;
+  border-radius: 15px;
+  border: 3px solid $neutral;
+  transition: 0.3s;
+
+  &:hover {
+    color: $neutral;
+    background: transparent;
+  }
+}

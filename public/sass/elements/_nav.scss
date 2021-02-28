@@ -12,6 +12,14 @@
   z-index: 10;
   transition: 0.5s;
 
+  @media (min-width: 1280px) {
+    flex-direction: row;
+    justify-content: space-around;
+    top: 0;
+    height: 80px;
+    background: darken($color: $siteBg, $amount: 5);
+  }
+
   &.active {
     top: 0;
   }
@@ -23,6 +31,13 @@
     justify-content: center;
     list-style: none;
     margin-bottom: 30px;
+
+    @media (min-width: 1280px) {
+      flex-direction: row;
+      justify-content: space-around;
+      width: 600px;
+      margin-bottom: 0;
+    }
   }
 
   &__link {

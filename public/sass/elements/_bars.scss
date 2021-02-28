@@ -41,4 +41,8 @@
     transform-origin: center right;
     transform: translateX(-50%) rotate(-45deg);
   }
+
+  @media (min-width: 1280px) {
+    display: none;
+  }
 }
