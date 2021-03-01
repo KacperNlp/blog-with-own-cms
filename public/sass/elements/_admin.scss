@@ -38,7 +38,6 @@
     & input {
       display: block;
       padding: 5px 10px;
-      outline: transparent;
       border: 1px solid #000;
       background: darken($color: $siteBg, $amount: 5);
       color: $fontColor;
@@ -61,7 +60,6 @@
       display: block;
       height: 200px;
       padding: 5px 10px;
-      outline: transparent;
       border: 1px solid #000;
       background: darken($color: $siteBg, $amount: 5);
       color: $fontColor;

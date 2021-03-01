@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    main(class="article-container")
+        article(class="article")
+            h1(class="article__title")=article.title
+            p(class="article__author") Author: #{article.author}
+            p(class="article__txt")=article.sneakPeak
+            p(class="article__txt")=article.content
+
+        if(isLogged !== false)
+            form(method="post" class="add-comment")
+                textarea(name="content" placeholder="Your comment..." class="add-comment__textarea")
+                button(submit class="button" class="add-comment__button") Add comment
+
+        section(class="comments")
+
+    script(src="/javascript/main.js" type="module") 

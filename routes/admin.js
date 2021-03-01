@@ -4,7 +4,6 @@ const Article = require("../models/Article");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  const { login } = req.params;
   const isLogged = !!req.session.user;
   const loginOfLoggedUser = req.session.user;
 
