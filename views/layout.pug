@@ -25,6 +25,14 @@ html
         a(href="/register" class="sign-in")
           span(class="fas fa-user")
           span Sign in
+      else if(isLogged !== false && loginOfLoggedUser === "Admin")
+        div(class="nav__admin-tools")
+          a(href=`/account/${loginOfLoggedUser}` class="sign-in")
+            span(class="fas fa-user")
+            span Hello #{loginOfLoggedUser}
+          a(href=`/admin` class="sign-in")
+            span(class="fas fa-pencil-ruler")
+            span Admin panel
       else 
         a(href=`/account/${loginOfLoggedUser}` class="sign-in")
           span(class="fas fa-user")

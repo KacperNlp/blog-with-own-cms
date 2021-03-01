@@ -1,0 +1,23 @@
+extends layout
+
+mixin formElement(inputName, text)
+    label(class="admin-form__label")
+        p=text 
+        input(type="text" name=inputName required)
+
+block content
+    main(class="admin-panel")
+        section(class="admin-panel__article-creater")
+            h2(class="admin-panel__section-title") Create new article
+            form(method="post" class="admin-form")
+                +formElement('author', 'Author')
+                +formElement('title', 'Title')
+                +formElement('sneakPeak', 'Sneak peak')
+                div(class="admin-form__textarea")
+                    p Content
+                    textarea(name="content" required) 
+                button(submit class="button admin-form__button") Add article
+                
+        section(class="admin-panel__list-of-users")
+
+    script(src="/javascript/main.js" type="module") 

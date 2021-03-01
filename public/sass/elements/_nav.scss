@@ -82,6 +82,26 @@
       left: 0;
     }
   }
+
+  &__admin-tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 1280px) {
+      flex-direction: row;
+    }
+
+    & a:first-child {
+      margin-bottom: 15px;
+
+      @media (min-width: 1280px) {
+        margin-bottom: 0;
+        margin-right: 30px;
+      }
+    }
+  }
 }
 
 .sign-in {
