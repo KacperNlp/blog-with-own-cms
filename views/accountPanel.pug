@@ -1,0 +1,18 @@
+extends layout
+
+mixin accountInfoElement(txt, info)
+  p(class="account-panel__txt") #{`${txt}: ${info}`}
+
+block content
+  main(class="account-panel")
+    div(class="account-panel__container")
+      div(class="fas fa-user-tie account-panel__icon")
+      div(class="account-panel__info")
+        +accountInfoElement('Nick: ', account.login)
+        +accountInfoElement('Fraction: ', account.fraction)
+        +accountInfoElement('Likes: ', account.likes)
+        +accountInfoElement('Comments: ', account.comments)
+
+    a(href='/account/logout' class="button account-panel__log-out") Log out
+
+  script(src="/javascript/main.js" type="module") 

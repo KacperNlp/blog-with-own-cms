@@ -16,6 +16,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 
 const indexRouter = require("./routes/index");
+const accountRouter = require("./routes/account");
 const usersRouter = require("./routes/users");
 const registerRouter = require("./routes/register");
 
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/account", accountRouter);
 app.use("/users", usersRouter);
 app.use("/register", registerRouter);
 
