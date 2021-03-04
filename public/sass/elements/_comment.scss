@@ -1,0 +1,77 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 50px auto;
+
+  @media (min-width: 740px) {
+    flex-direction: row;
+    align-items: center;
+    width: 700px;
+  }
+
+  &__header {
+    margin: 100px 0 30px;
+    font-size: 2rem;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 80px;
+    height: 100px;
+    margin-bottom: 20px;
+
+    @media (min-width: 740px) {
+      margin-bottom: 0;
+      margin-right: 50px;
+    }
+  }
+
+  &__icon {
+    font-size: 6rem;
+  }
+
+  &__nick {
+    font-size: 1.2rem;
+  }
+
+  &__content {
+    position: relative;
+    line-height: 180%;
+    font-size: 1.2rem;
+    @media (min-width: 740px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__likes {
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    font-size: 1.8rem;
+    transition: 0.3s;
+
+    & span::before {
+      margin-right: 5px;
+    }
+
+    & .fas {
+      color: rgb(218, 82, 82);
+    }
+  }
+
+  &__is-logged:hover {
+    color: rgb(218, 82, 82);
+    cursor: pointer;
+  }
+
+  &__has-been-liked {
+    color: rgb(218, 82, 82);
+  }
+}

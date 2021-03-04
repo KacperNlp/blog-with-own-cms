@@ -1,5 +1,16 @@
 extends layout
 
+mixin commentStructure(author, text, likes, id, listOfUsers)
+    div(class="comment")
+        div(class="comment__user-container")
+            span(class="comment__icon fas fa-user-tie")
+            p(class="comment__nick")=author
+        div(class="comment__content")
+            p(class="comment__txt")=text
+            div(class=`${isLogged ? 'comment__likes comment__is-logged' : 'comment__likes'}${listOfUsers.includes(loginOfLoggedUser) ? ' comment__has-been-liked' : ''}`)
+                span(class=`${listOfUsers.includes(loginOfLoggedUser) ? 'fas fa-heart' : 'far fa-heart'}` id="heart" data-id=id data-author=author) #{likes > 0 ? likes : ''}
+        p #{listOfUsers.length}
+
 block content
     main(class="article-container")
         article(class="article")
@@ -8,11 +19,17 @@ block content
             p(class="article__txt")=article.sneakPeak
             p(class="article__txt")=article.content
 
-        if(isLogged !== false)
+        if(isLogged)
             form(method="post" class="add-comment")
-                textarea(name="content" placeholder="Your comment..." class="add-comment__textarea")
+                textarea(name="content" placeholder="Your comment..." class="add-comment__textarea" required)
                 button(submit class="button" class="add-comment__button") Add comment
 
         section(class="comments")
+            if(comments !== false)
+                h2(class="comment__header") Users comments:  
+                each comment in comments
+                    +commentStructure(comment.author, comment.content, comment.likes, comment._id, comment.listOfUsersWhichLiked)
 
+    if(isLogged)
+        script(src="/javascript/modules/LikesHandle.js" type="module")    
     script(src="/javascript/main.js" type="module") 
