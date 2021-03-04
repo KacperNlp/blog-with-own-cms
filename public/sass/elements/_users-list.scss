@@ -1,0 +1,90 @@
+.users-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-of-users {
+  width: 90%;
+  margin: 50px 0;
+
+  @media (min-width: 720px) {
+    width: 650px;
+  }
+
+  @media (min-width: 1020px) {
+    width: 750px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 1000px;
+    margin-top: 100px;
+  }
+
+  &__table {
+    width: 100%;
+  }
+}
+
+.users-table {
+  &__header {
+    padding: 15px 10px;
+    font-weight: normal;
+    font-size: 1.4rem;
+
+    @media (min-width: 1280px) {
+      padding: 25px 10px;
+      font-size: 1.6rem;
+    }
+  }
+
+  &__row {
+    background: darken($color: $siteBg, $amount: 5);
+
+    &:nth-child(odd) {
+      background: darken($siteBg, 3);
+    }
+  }
+
+  &__row-header {
+    background: darken($color: $siteBg, $amount: 10) !important;
+  }
+
+  &__data {
+    padding: 15px 10px;
+    font-weight: normal;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @media (min-width: 1280px) {
+      padding: 25px 10px;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+
+  @media (min-width: 1280px) {
+    margin-top: 200px;
+  }
+
+  &__input {
+    padding: 10px 15px;
+    outline: transparent;
+    color: $fontColor;
+    background: #111;
+    border: 1px solid darken($color: $siteBg, $amount: 5);
+  }
+
+  &__button {
+    outline: transparent;
+    border-radius: 0;
+    padding: 8px 15px;
+  }
+}

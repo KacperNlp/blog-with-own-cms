@@ -19,7 +19,7 @@ html
     nav(class="nav" id="nav")
       ul(class="nav__list") 
         +navElement('Main', '/', 'fas fa-home')
-        +navElement('All users', '/users', 'fas fa-users')
+        +navElement('All users', '/users-list', 'fas fa-users')
         +navElement('Fractions', '/fractions', 'fas fa-flag')
       if(isLogged == false)
         a(href="/register" class="sign-in")
