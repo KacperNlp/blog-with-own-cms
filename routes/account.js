@@ -11,10 +11,15 @@ router.get("/logout", (req, res, next) => {
 });
 
 //render login panel by nick name
-router.get("/:login", function (req, res, next) {
+router.get("/:login", async function (req, res, next) {
   const { login } = req.params;
+  const { fraction } = req.query;
   const isLogged = !!req.session.user;
   const loginOfLoggedUser = req.session.user;
+
+  if (fraction) {
+    await Accounts.updateOne({ login }, { $set: { fraction: fraction } });
+  }
 
   Accounts.find({ login }, (err, foundLogin) => {
     if (err) {

@@ -5,7 +5,7 @@ mixin accountInfoElement(txt, info)
 
 mixin fractionInput(fractionName, userFraction)
    input(type="radio" name="fraction" value=fractionName id=fractionName class="fractions-form__input")
-   label(for=fractionName)=fractionName
+   label(for=fractionName class="fractions-form__label")=fractionName
 
 block content
   main(class="account-panel")
