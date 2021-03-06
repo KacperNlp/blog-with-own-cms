@@ -51,6 +51,7 @@
   }
 
   &__likes {
+    display: flex;
     position: absolute;
     bottom: -30px;
     right: 20px;
@@ -73,5 +74,17 @@
 
   &__has-been-liked {
     color: rgb(218, 82, 82);
+  }
+}
+
+.delete-comment {
+  position: absolute;
+  left: 150%;
+  text-decoration: none;
+  color: rgb(209, 94, 94);
+  font-size: 1.2rem;
+
+  &:hover {
+    color: $fontColor;
   }
 }

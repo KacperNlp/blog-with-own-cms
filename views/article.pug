@@ -9,7 +9,8 @@ mixin commentStructure(author, text, likes, id, listOfUsers)
             p(class="comment__txt")=text
             div(class=`${isLogged ? 'comment__likes comment__is-logged' : 'comment__likes'}${listOfUsers.includes(loginOfLoggedUser) ? ' comment__has-been-liked' : ''}`)
                 span(class=`${listOfUsers.includes(loginOfLoggedUser) ? 'fas fa-heart' : 'far fa-heart'}` id="heart" data-id=id data-author=author) #{likes > 0 ? likes : ''}
-        p #{listOfUsers.length}
+                if(loginOfLoggedUser == 'Admin')
+                    a(href=`/article/delete/${article._id}/${id}?method=delete` class="delete-comment") delete
 
 block content
     main(class="article-container")

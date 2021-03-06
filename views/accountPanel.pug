@@ -3,8 +3,20 @@ extends layout
 mixin accountInfoElement(txt, info)
   p(class="account-panel__txt") #{`${txt} ${info}`}
 
+mixin fractionInput(fractionName, userFraction)
+   input(type="radio" name="fraction" value=fractionName id=fractionName class="fractions-form__input")
+   label(for=fractionName)=fractionName
+
 block content
   main(class="account-panel")
+    div(class="fractions-form")
+      form(method="GET")
+        +fractionInput('neutral', account.fraction)
+        +fractionInput('red', account.fraction)
+        +fractionInput('blue', account.fraction)
+        +fractionInput('green', account.fraction)
+        +fractionInput('yellow', account.fraction)
+        input(type="submit" value="Change Fraction")
     div(class="account-panel__container")
       div(class="fas fa-user-tie account-panel__icon")
       div(class="account-panel__info")

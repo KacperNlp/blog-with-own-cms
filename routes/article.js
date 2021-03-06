@@ -5,6 +5,17 @@ const Article = require("../models/Article");
 const Comment = require("../models/Comment");
 const Accounts = require("../models/Accounts");
 
+router.use((req, res, next) => {
+  const { method } = req.query;
+  if (method) {
+    const indexOfMethodType = req.url.indexOf("?");
+    const newUrl = req.url.slice(0, indexOfMethodType);
+    req.method = "DELETE";
+    req.url = newUrl;
+  }
+  next();
+});
+
 /* GET users listing. */
 router.get("/:id", function (req, res, next) {
   const { id } = req.params;
@@ -131,6 +142,50 @@ router.post("/:articleID/:commentID", (req, res, next) => {
           res.end();
         }
       });
+    }
+  });
+});
+
+router.delete("/delete/:articleID/:commentID", (req, res, next) => {
+  const { commentID, articleID } = req.params;
+
+  const commentToDelete = Comment.findById(commentID);
+
+  commentToDelete.exec((err, comment) => {
+    if (err) {
+      throw Error(err);
+    } else {
+      const { author, likes: commentLikes } = comment;
+      const commentAuthor = Accounts.findOne({ login: author });
+
+      commentAuthor.exec((err, authorData) => {
+        if (err) {
+          throw Error(err);
+        } else {
+          const { likes, comments } = authorData;
+          Accounts.updateOne(
+            { login: author },
+            {
+              $set: { comments: comments - 1, likes: likes - commentLikes },
+            },
+            (err) => {
+              if (err) {
+                throw Error(err);
+              }
+            }
+          );
+        }
+      });
+
+      idOfcomment = mongodb.ObjectID(commentID);
+
+      Comment.deleteOne({ _id: idOfcomment }, (err) => {
+        if (err) {
+          throw Error(err);
+        }
+      });
+
+      res.redirect(`/article/${articleID}`);
     }
   });
 });
