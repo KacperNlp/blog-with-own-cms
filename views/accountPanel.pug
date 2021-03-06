@@ -4,8 +4,9 @@ mixin accountInfoElement(txt, info)
   p(class="account-panel__txt") #{`${txt} ${info}`}
 
 mixin fractionInput(fractionName, userFraction)
-   input(type="radio" name="fraction" value=fractionName id=fractionName class="fractions-form__input")
-   label(for=fractionName class="fractions-form__label")=fractionName
+  div(class="fractions-form__container")
+    input(type="radio" name="fraction" value=fractionName id=fractionName class="fractions-form__input")
+    label(for=fractionName class=`fractions-form__label ${fractionName}`)=fractionName
 
 block content
   main(class="account-panel")
@@ -16,7 +17,7 @@ block content
         +fractionInput('blue', account.fraction)
         +fractionInput('green', account.fraction)
         +fractionInput('yellow', account.fraction)
-        input(type="submit" value="Change Fraction")
+        input(type="submit" value="Change Fraction" class="button")
     div(class="account-panel__container")
       div(class="fas fa-user-tie account-panel__icon")
       div(class="account-panel__info")

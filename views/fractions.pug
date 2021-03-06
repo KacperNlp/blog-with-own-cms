@@ -1,0 +1,22 @@
+extends layout
+
+mixin tableElement(fraction, members, points)
+    tr(class="users-table__row") 
+        td(class="users-table__data")=fraction
+        td(class="users-table__data")=members
+        td(class="users-table__data")=points
+
+block content
+    main(class="account-panel")
+        section(class="list-of-users")          
+            table(class="list-of-users__table users-table")
+                thead(class="users-table__head") 
+                    tr(class="users-table__row users-table__row-header") 
+                        th(class="users-table__header") Fraction
+                        th(class="users-table__header") Members
+                        th(class="users-table__header") Points
+                tbody
+                    each fraction in fractions 
+                        +tableElement(fraction.name, fraction.members, fraction.points)
+
+    script(src="/javascript/main.js" type="module") 

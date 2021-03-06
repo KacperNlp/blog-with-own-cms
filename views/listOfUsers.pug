@@ -3,7 +3,7 @@ extends layout
 mixin tableElement(login, fraction, likes, comments)
     tr(class="users-table__row") 
         td(class="users-table__data")=login
-        td(class="users-table__data")=fraction
+        td(class=`users-table__data ${fraction}`)=fraction
         td(class="users-table__data")=likes
         td(class="users-table__data")=comments
 
