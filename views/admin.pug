@@ -1,5 +1,15 @@
 extends layout
 
+mixin userElement(login, id)
+    li(class="admin-panel__user-element")
+        p=login 
+        a(href=`/admin/ban/${id}` class="ban") ban
+
+mixin bannedUserElement(login, id)
+    li(class="admin-panel__user-element")
+        p=login 
+        a(href=`/admin/unban/${id}` class="unban") unban
+
 mixin formElement(inputName, text)
     label(class="admin-form__label")
         p=text 
@@ -7,6 +17,16 @@ mixin formElement(inputName, text)
 
 block content
     main(class="admin-panel")
+        section(class="admin-panel__users-list")
+            p(class="admin-panel__users-header") List of users
+            ul(class="admin-panel__users-list")
+                each user in users
+                    +userElement(user.login, user._id)
+            p(class="admin-panel__users-header") List of banned users
+            ul(class="admin-panel__users-list")
+                each user in banndeUsers
+                    +bannedUserElement(user.login, user._id)
+
         section(class="admin-panel__article-creater")
             h2(class="admin-panel__section-title") Create new article
             form(method="post" class="admin-form")

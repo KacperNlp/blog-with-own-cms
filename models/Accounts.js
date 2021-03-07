@@ -9,6 +9,7 @@ const accountSchema = new Schema(
     fraction: { type: String, default: "neutral" },
     comments: { type: Number, default: 0 },
     likes: { type: Number, default: 0 },
+    isBanned: { type: Boolean, default: false },
   },
   {
     collection: "accounts",

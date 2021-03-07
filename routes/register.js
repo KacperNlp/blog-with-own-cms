@@ -38,17 +38,20 @@ router.post("/", (req, res, next) => {
         res.redirect("/register");
       } else {
         listOfAccounts.forEach((account, id, array) => {
-          if (account.login === login && account.password === password) {
+          if (
+            account.login === login &&
+            account.password === password &&
+            !account.isBanned
+          ) {
             req.session.user = login;
 
             res.redirect("/");
           }
           if (id + 1 === array.length) {
-            console.log("hej");
             res.render("register", {
               messages: false,
               registerParams: false,
-              loginParams: `This account isn't exists`,
+              loginParams: `This account isn't exists or your account could be banned!`,
               isLogged,
               loginOfLoggedUser,
             });
